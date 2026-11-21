@@ -1,0 +1,17 @@
+# H8 Pro Max 2024 (NL5H00X), Android 9 (SDK 28), HiSilicon
+# Debloat list for user 0
+
+# Manufacturer bloatware, demo apps & testing tools
+com.newlink.isuperred.ijkplayerdemo
+com.newlink.tvtestingtools
+com.hikeymasterprovision
+com.mobisystems.editor.office_registered
+com.zhiying.appstore
+com.hisilicon.android.inputmethod.remote
+com.newlink.screensaver
+com.hisilicon.android.music
+com.hisilicon.higallery
+com.hisilicon.android.videoplayer
+com.uv.droid.uota
+com.uv.droid.uotaback
+

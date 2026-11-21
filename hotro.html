@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Việt Xiaomi · Hỗ trợ TV từ xa</title>
+<meta name="description" content="Hỗ trợ cài đặt, fix lỗi TV Xiaomi từ xa trên toàn quốc.">
+<meta name="theme-color" content="#ff6900">
+<style>
+:root{
+  --mi:#ff6900;--mi2:#ff7b22;--ink:#111318;--muted:#71757d;--line:#e8eaee;
+  --soft:#f6f7f9;--card:#fff;--ok:#16a34a;--shadow:0 18px 55px rgba(18,24,32,.08)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:#f4f5f7;color:var(--ink)}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.wrap{width:min(1160px,calc(100% - 24px));margin:auto}
+.top{padding:22px 0 14px}
+.brand{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand-main{display:flex;align-items:center;gap:14px}
+.mi-logo{width:58px;height:58px;border-radius:17px;background:var(--mi);display:grid;place-items:center;color:#fff;font-size:27px;font-weight:900;letter-spacing:-2px;box-shadow:0 12px 28px rgba(255,105,0,.28)}
+.brand h1{margin:0;font-size:25px;line-height:1}
+.brand p{margin:7px 0 0;color:var(--muted);font-size:13px}
+.support-link{padding:11px 14px;border-radius:13px;background:#fff;border:1px solid var(--line);font-size:13px;font-weight:800}
+.hero{background:linear-gradient(145deg,#15171b,#24272d 72%,#342419);border-radius:28px;padding:32px;color:#fff;position:relative;overflow:hidden;box-shadow:0 24px 70px rgba(17,19,24,.14)}
+.hero:after{content:"";position:absolute;width:330px;height:330px;right:-120px;top:-140px;border-radius:50%;background:radial-gradient(circle,rgba(255,105,0,.35),transparent 68%)}
+.kicker{display:inline-flex;align-items:center;gap:8px;padding:8px 11px;border:1px solid rgba(255,152,85,.25);background:rgba(255,105,0,.12);border-radius:999px;color:#ffd7bd;font-size:12px;font-weight:850}
+.hero h2{margin:15px 0 10px;font-size:clamp(30px,5vw,48px);letter-spacing:-1.2px;line-height:1.05;max-width:760px}
+.hero p{margin:0;color:#c8ccd3;line-height:1.7;font-size:14.5px;max-width:760px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px;margin:20px 0 34px}
+.stack{display:grid;gap:16px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 7px 28px rgba(22,27,34,.04)}
+.step-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px}
+.step-title{display:flex;gap:12px;align-items:flex-start}
+.num{width:36px;height:36px;border-radius:12px;background:#fff4ec;color:var(--mi);display:grid;place-items:center;font-weight:900;font-size:13px;flex:0 0 auto}
+.step h3{margin:0;font-size:19px}
+.step .sub{margin:5px 0 0;color:var(--muted);font-size:13px;line-height:1.5}
+.count{font-size:12px;font-weight:800;color:var(--muted);background:var(--soft);padding:7px 9px;border-radius:999px}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.option{position:relative;border:1px solid var(--line);background:#fff;border-radius:18px;padding:15px;display:flex;align-items:center;gap:12px;min-height:88px;transition:.18s ease}
+.option:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(20,24,31,.06)}
+.option.active{border-color:#ffb57f;background:#fff9f5;box-shadow:0 0 0 3px rgba(255,105,0,.08)}
+.icon{width:48px;height:48px;border-radius:15px;background:var(--soft);display:grid;place-items:center;flex:0 0 auto;font-size:22px}
+.icon.mi,.icon.vxm{background:var(--mi);color:white;font-weight:900}
+.icon.vxm{font-size:14px;letter-spacing:.2px}
+.gtv{background:white;border:1px solid var(--line);font-size:11px;font-weight:900;letter-spacing:-.5px}
+.gtv b:nth-child(1){color:#4285f4}.gtv b:nth-child(2){color:#ea4335}.gtv b:nth-child(3){color:#fbbc05}.gtv b:nth-child(4){color:#34a853}
+.option strong{display:block;font-size:14px;margin-bottom:4px}
+.option span{display:block;color:var(--muted);font-size:12.5px;line-height:1.42}
+.check{position:absolute;right:12px;top:12px;width:21px;height:21px;border-radius:50%;border:1.5px solid #d9dce2;background:#fff;display:grid;place-items:center;color:#fff;font-size:12px}
+.option.active .check{background:var(--mi);border-color:var(--mi)}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:grid;gap:7px}
+.field.full{grid-column:1/-1}
+label{font-size:12.5px;font-weight:800}
+input,select,textarea{width:100%;border:1px solid var(--line);background:#fbfbfc;border-radius:13px;padding:12px 13px;outline:none;color:var(--ink)}
+input:focus,select:focus,textarea:focus{border-color:#ffb078;box-shadow:0 0 0 3px rgba(255,105,0,.08)}
+textarea{min-height:92px;resize:vertical}
+.helper{font-size:11.5px;color:#92969d}
+.reset{margin-top:13px;border:0;background:transparent;color:var(--muted);font-size:12.5px;font-weight:800;padding:6px 0}
+.side{display:grid;gap:14px;align-content:start;position:sticky;top:12px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:22px;padding:19px;box-shadow:0 7px 28px rgba(22,27,34,.04)}
+.panel h4{margin:0 0 8px;font-size:16px}
+.panel p{margin:0;color:var(--muted);font-size:12.8px;line-height:1.55}
+.tips{display:grid;gap:10px;margin-top:13px}
+.tip{display:flex;gap:9px;font-size:12.8px;line-height:1.5;color:#484c53}
+.tick{color:var(--ok);font-weight:900}
+.draft-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.badge{font-size:10.5px;font-weight:900;letter-spacing:.4px;background:#f2f3f5;padding:6px 8px;border-radius:999px;color:#777c84}
+.preview{white-space:pre-wrap;background:#f7f8fa;border:1px solid var(--line);border-radius:14px;padding:13px;font-size:12.5px;line-height:1.55;min-height:145px;color:#3d4148}
+.copy{width:100%;margin-top:10px;border:0;border-radius:13px;background:linear-gradient(135deg,var(--mi),var(--mi2));color:#fff;padding:12px;font-weight:900}
+.note{font-size:11px;color:#969aa1;margin-top:9px;line-height:1.45}
+.contact{background:linear-gradient(145deg,#fff,#fff7f1);border:1px solid #f1e3d8}
+.contact-links{display:grid;gap:9px;margin-top:13px}
+.contact-link{display:flex;align-items:center;gap:10px;padding:11px 12px;background:#fff;border:1px solid var(--line);border-radius:13px;font-size:12.8px;font-weight:800}
+.ci{width:31px;height:31px;border-radius:10px;background:#f6f7f9;display:grid;place-items:center}.brand-icon{background:#fff;padding:6px}.brand-icon img{width:100%;height:100%;object-fit:contain;display:block}
+.footer{text-align:center;color:#90949b;font-size:11.5px;padding-bottom:26px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.side{position:static}.options{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.wrap{width:min(100% - 16px,1160px)}.top{padding-top:14px}.mi-logo{width:50px;height:50px;border-radius:14px}.brand h1{font-size:20px}.brand p{font-size:11.5px}.support-link{display:none}.hero{padding:24px 19px;border-radius:22px}.hero h2{font-size:32px}.step{padding:17px;border-radius:20px}.options{grid-template-columns:1fr}.fields{grid-template-columns:1fr}.field.full{grid-column:auto}.option{min-height:78px}}
+
+.real img,.real-logo img,.sys img{display:block;max-width:100%;max-height:100%;object-fit:contain}
+.mi-logo.real{padding:10px}
+.mi-logo.real img{width:100%;height:100%}
+.real-logo{background:#fff;border:1px solid var(--line);padding:9px}
+.real-logo.xiaomi{background:#ff6900;border-color:#ff6900;padding:10px}
+.sys{background:#f6f7f9;padding:11px}
+.sys img{width:26px;height:26px}
+</style>
+<link rel="stylesheet" href="liquid.css?v=20261026-counters">
+<link rel="preload" href="assets/google-sans-flex.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="icon" href="assets/viet-xiaomi.png">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="brand-main">
+        <div class="mi-logo real"><img src="assets/viet-xiaomi.png" alt="Việt Xiaomi"></div>
+        <div><h1>Việt Xiaomi</h1><p>Hỗ trợ cài đặt, fix lỗi từ xa</p></div>
+      </div>
+      <nav class="header-tabs" aria-label="Điều hướng trang"><a href="#support">Hỗ trợ</a><a href="#showcase">Giao diện</a><a href="#apps">Tải app</a><a href="#contact">Liên hệ</a></nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="kicker">● HỖ TRỢ TỪ XA · TOÀN QUỐC</div>
+    <h2>TV gặp lỗi? Việt Xiaomi hỗ trợ bạn.</h2>
+    <p>Hỗ trợ qua điện thoại hoặc máy tính trên toàn quốc. Chọn loại TV và nhu cầu để xem thông tin cần chuẩn bị, rồi sao chép yêu cầu gửi cho Việt.</p>
+  </section>
+
+  <section class="site-counters" aria-label="Thống kê trang">
+    <div><strong id="visitCount" data-counter-value>—</strong><span>Lượt truy cập</span></div>
+    <div><strong id="downloadCount" data-counter-value>—</strong><span>Lượt bấm tải app</span></div>
+  </section>
+  <div class="layout" id="support">
+    <main class="stack">
+
+      <section class="step">
+        <div class="step-head">
+          <div class="step-title">
+            <div class="num">01</div>
+            <div><h3>Bạn đang dùng loại TV nào?</h3><p class="sub">Chọn TV Quốc tế hoặc TV Nội địa.</p></div>
+          </div>
+        </div>
+        <div class="options" id="tvOptions">
+          <button class="option" type="button" data-tv="Google TV / TV Quốc tế">
+            <div class="icon real-logo"><img src="assets/google-tv.svg" alt="Google TV"></div>
+            <div><strong>TV Quốc tế</strong></div>
+            <div class="check">✓</div>
+          </button>
+          <button class="option" type="button" data-tv="TV Nội địa">
+            <div class="icon real-logo xiaomi"><img src="assets/xiaomi.svg" alt="Xiaomi"></div>
+            <div><strong>TV Nội địa</strong></div>
+            <div class="check">✓</div>
+          </button>
+        </div>
+      </section>
+
+      <section class="step">
+        <div class="step-head">
+          <div class="step-title">
+            <div class="num">02</div>
+            <div><h3>Bạn cần hỗ trợ việc gì?</h3><p class="sub">Có thể chọn nhiều nhu cầu cùng lúc.</p></div>
+          </div>
+          <div class="count" id="issueCount">0 đã chọn</div>
+        </div>
+        <div class="options" id="issueOptions">
+          <button class="option" type="button" data-issue="Màn hình đen">
+            <div class="icon sys"><img src="assets/screen-off.svg" alt=""></div>
+            <div><strong>Màn hình đen</strong><span>TV bật nhưng không hiển thị hình</span></div>
+            <div class="check">✓</div>
+          </button>
+          <button class="option" type="button" data-issue="Giao diện tiếng Trung">
+            <div class="icon" aria-hidden="true">文</div>
+            <div><strong>Giao diện tiếng Trung</strong><span>Cần hỗ trợ giao diện dễ dùng hơn</span></div>
+            <div class="check">✓</div>
+          </button>
+          <button class="option" type="button" data-issue="Lỗi giọng nói">
+            <div class="icon sys"><img src="assets/mic-off.svg" alt=""></div>
+            <div><strong>Lỗi giọng nói</strong><span>Không sử dụng được tìm kiếm giọng nói</span></div>
+            <div class="check">✓</div>
+          </button>
+          <button class="option" type="button" data-issue="Khóa giao diện">
+            <div class="icon sys"><img src="assets/lock.svg" alt=""></div>
+            <div><strong>Khóa giao diện</strong><span>Bị khóa các chức năng</span></div>
+            <div class="check">✓</div>
+          </button>
+        </div>
+      </section>
+
+      <section class="step">
+        <div class="step-head">
+          <div class="step-title">
+            <div class="num">03</div>
+            <div><h3>Bổ sung để kiểm tra nhanh hơn</h3><p class="sub">Không bắt buộc. Điền những thông tin bạn biết.</p></div>
+          </div>
+        </div>
+
+        <div class="fields">
+          <div class="field">
+            <label for="model">Model TV</label>
+            <input id="model" placeholder="VD: L55RB-APE">
+            <div class="helper">Xem trong mục Giới thiệu hoặc tem sau TV.</div>
+          </div>
+          <div class="field">
+            <label for="city">Tỉnh / thành phố</label>
+            <input id="city" placeholder="VD: Phú Thọ">
+          </div>
+          <div class="field">
+            <label for="device">Thiết bị dùng để hỗ trợ</label>
+            <select id="device">
+              <option>Chưa xác định</option>
+              <option>Điện thoại Android</option>
+              <option>iPhone</option>
+              <option>Máy tính Windows</option>
+              <option>Máy tính macOS</option>
+              <option>Chỉ có TV</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="network">Mạng đang dùng trên TV</label>
+            <select id="network">
+              <option>Chưa xác định</option>
+              <option>Wi-Fi</option>
+              <option>Cáp mạng LAN</option>
+              <option>TV chưa vào được mạng</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="desc">Mô tả ngắn</label>
+            <textarea id="desc" placeholder="VD: Bật TV lên chỉ có màn hình đen, vẫn có tiếng..."></textarea>
+          </div>
+          <div class="field full">
+            <label for="time">Thời gian thuận tiện</label>
+            <input id="time" placeholder="VD: Sau 19h tối nay">
+          </div>
+        </div>
+        <button class="reset" id="resetBtn" type="button">Làm mới lựa chọn</button>
+      </section>
+    </main>
+
+    <aside class="side">
+      <section class="panel">
+        <h4>TRƯỚC KHI LIÊN HỆ</h4>
+        <p>Chuẩn bị một chút. Hỗ trợ thuận tiện hơn.</p>
+        <div class="tips">
+          <div class="tip"><span class="tick">✓</span><span>TV ở gần bạn, có điều khiển và kết nối Internet nếu TV vẫn hoạt động.</span></div>
+          <div class="tip"><span class="tick">✓</span><span>Điện thoại hoặc máy tính để liên hệ. Việt sẽ hướng dẫn cách kết nối khi cần thao tác.</span></div>
+          <div class="tip"><span class="tick">✓</span><span>Ảnh màn hình chính hoặc tem model để xác định TV Quốc tế hay TV Nội địa.</span></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="draft-head"><h4 style="margin:0">Yêu cầu của bạn</h4><span class="badge">BẢN NHÁP</span></div>
+        <p style="margin-bottom:10px">Nội dung cập nhật theo lựa chọn của bạn.</p>
+        <div class="preview" id="draft">Chọn loại TV và nhu cầu để tạo nội dung yêu cầu hỗ trợ.</div>
+        <button class="copy" id="copyBtn" type="button">Sao chép yêu cầu</button>
+        <div class="note">Chỉ sao chép, không tự gửi tin nhắn. Thông tin chỉ dùng để tạo bản nháp trong trang này.</div>
+      </section>
+
+      <section class="panel contact" id="contact">
+        <h4>VIỆT XIAOMI · HỖ TRỢ TOÀN QUỐC</h4>
+        <p>Kết nối với Việt. Hỗ trợ từ xa trên toàn quốc qua điện thoại và máy tính. Trao đổi tình trạng, phương án và chi phí trước khi thực hiện.</p>
+        <div class="contact-links">
+          <a class="contact-link" href="https://fb.com/vietxiaomi93" target="_blank" rel="noopener"><span class="ci brand-icon"><img src="assets/facebook.svg" alt="Facebook"></span><span>Nguyễn Văn Việt · Facebook</span></a>
+          <a class="contact-link" href="https://zalo.me/0343220893" target="_blank" rel="noopener"><span class="ci brand-icon"><img src="assets/zalo.svg" alt="Zalo"></span><span>Việt Xiaomi</span></a>
+          <a class="contact-link" href="tel:0343220893"><span class="ci brand-icon"><img src="assets/call.svg" alt="Gọi điện"></span><span>0343 22 08 93</span></a>
+        </div>
+        <div class="note">Bạn chủ động mở liên hệ và gửi nội dung.</div>
+      </section>
+    </aside>
+  </div>
+
+  <section id="showcase" class="app-showcase" aria-labelledby="showcase-title">
+    <div class="showcase-heading"><span class="app-label">ẢNH CHỤP GIAO DIỆN THẬT</span><h2 id="showcase-title">Mỗi giao diện. Một cách tận hưởng.</h2><p>Khám phá VietMiTV, giao diện màn hình chính Projectivy Launcher và Liquid Launcher, cùng Sport Stream và VXM Store qua ảnh chụp trực tiếp từ thiết bị.</p></div>
+    <div class="showcase-grid"><figure><div class="showcase-image channels-image"><img src="assets/v22-channels.png" width="1920" height="1080" loading="lazy" alt="Giao diện thật VietMiTV v22: cột nhóm kênh và danh sách VTV"></div><figcaption><h3>Tìm kênh dễ. Chuyển kênh nhanh.</h3><p>Chọn nhóm VTV, địa phương, HTV, VTVcab, SCTV hoặc quốc tế. Logo và tên kênh rõ ràng, dễ chọn bằng phím điều hướng trên remote.</p></figcaption></figure><figure><div class="showcase-image"><img src="assets/v22-player.png" width="1920" height="1080" loading="lazy" alt="Giao diện thật bảng thông tin VietMiTV v22 với tên kênh, LIVE, chất lượng và đồng hồ"></div><figcaption><h3>Thông tin rõ. Tập trung vào chương trình.</h3><p>Tên kênh, nhãn LIVE, chất lượng, giờ và ngày hiển thị gọn gàng. Bảng thông tin tự ẩn để bạn tiếp tục thưởng thức nội dung.</p></figcaption></figure><figure><a class="showcase-image" style="display:block" href="assets/projectivy-screen.png" target="_blank" rel="noopener" aria-label="Xem ảnh đầy đủ Projectivy Launcher"><img src="assets/projectivy-screen.png" width="1920" height="1080" loading="lazy" alt="Ảnh chụp thật giao diện Projectivy Launcher trên TV"></a><figcaption><h3>Projectivy Launcher</h3><p>Màn hình chính đã tùy chỉnh trên TV, với hình nền, đồng hồ, thời tiết và các ứng dụng thường dùng.</p></figcaption></figure><figure><a class="showcase-image" style="display:block" href="assets/liquid-launcher-screen.png" target="_blank" rel="noopener" aria-label="Xem ảnh đầy đủ Liquid Launcher"><img src="assets/liquid-launcher-screen.png" width="1920" height="1080" loading="lazy" alt="Ảnh chụp thật giao diện Liquid Launcher trên TV"></a><figcaption><h3>Liquid Launcher</h3><p>Màn hình chính thoáng, thanh công cụ kính nổi và hàng ứng dụng lớn, dễ chọn bằng remote.</p></figcaption></figure><figure><a class="showcase-image" style="display:block" href="assets/sport-stream-current.png" target="_blank" rel="noopener" aria-label="Xem ảnh đầy đủ Sport Stream"><img src="assets/sport-stream-current.png" width="1920" height="1080" loading="lazy" alt="Ảnh chụp thật giao diện Sport Stream trên TV"></a><figcaption><h3>Sport Stream</h3><p>Danh sách trận theo môn thể thao, hiển thị lịch thi đấu và trạng thái LIVE trong từng ô.</p></figcaption></figure><figure><a class="showcase-image" style="display:block" href="assets/vxm-store-current.png" target="_blank" rel="noopener" aria-label="Xem ảnh đầy đủ VXM Store"><img src="assets/vxm-store-current.png" width="1920" height="1080" loading="lazy" alt="Ảnh chụp thật VXM Store trên TV với danh sách ứng dụng và nút tải xuống"></a><figcaption><h3>VXM Store</h3><p>Kho ứng dụng trên TV với hàng app khuyên dùng, danh mục rõ ràng và biểu tượng lớn để chọn bằng remote.</p></figcaption></figure></div>
+    <p class="capture-note">Ảnh chụp thật từ thiết bị; bố cục và nội dung có thể thay đổi theo cấu hình. Bấm ảnh launcher, Sport Stream hoặc VXM Store để xem đầy đủ. Riêng ảnh VietMiTV v22 không ghi lại lớp video nên vùng phát có nền đen.</p>
+  </section>
+<section id="apps" class="app-catalog" aria-labelledby="catalog-title"><div class="showcase-heading"><span class="app-label">ỨNG DỤNG CHO MÀN HÌNH LỚN</span><h2 id="catalog-title">Thêm tiện ích. Cho chiếc TV của bạn.</h2><p>Các ứng dụng TV / TV Box của Việt Xiaomi đã có bản tải công khai. Chọn ứng dụng bạn cần, hoặc liên hệ để được tư vấn theo model thiết bị.</p></div><div class="tv-app-grid"><article class="tv-app-card"><div class="tv-app-header"><img src="assets/app-vietmitv.png" alt="" width="52" height="52" loading="lazy"><div><h3>VietMiTV v22</h3><span>Google TV / Android TV quốc tế</span></div></div><p>Xem truyền hình, duyệt kênh theo nhóm và điều khiển bằng remote. Giao diện mới với nhãn LIVE, chất lượng kênh và đồng hồ rõ ràng.</p><a class="glass-action" href="stats.php?app=vietmitv">Tải APK <span aria-hidden="true">↓</span></a><span class="app-download-count" data-counter-value data-download-count="vietmitv">Đang tải số liệu…</span></article><article class="tv-app-card"><div class="tv-app-header"><img src="assets/app-karaoke.png" alt="" width="52" height="52" loading="lazy"><div><h3>VXM Karaoke</h3><span>Android TV</span></div></div><p>Tìm bài karaoke trên YouTube bằng tên hoặc giọng nói. Quét QR để chọn bài từ điện thoại và sắp xếp danh sách chờ.</p><a class="glass-action" href="stats.php?app=karaoke">Tải APK <span aria-hidden="true">↓</span></a><span class="app-download-count" data-counter-value data-download-count="karaoke">Đang tải số liệu…</span></article><article class="tv-app-card"><div class="tv-app-header"><img src="assets/app-vxm.png" alt="" width="52" height="52" loading="lazy"><div><h3>VXM Store</h3><span>Android TV</span></div></div><p>Kho ứng dụng dành cho TV: duyệt danh sách và tải ứng dụng phù hợp ngay trên màn hình lớn.</p><a class="glass-action" href="stats.php?app=store">Tải APK <span aria-hidden="true">↓</span></a><span class="app-download-count" data-counter-value data-download-count="store">Đang tải số liệu…</span></article><article class="tv-app-card"><div class="tv-app-header"><img src="assets/app-manager.png" alt="" width="52" height="52" loading="lazy"><div><h3>VXM Manager</h3><span>Android TV</span></div></div><p>Quản lý ứng dụng trên TV với giao diện dành cho màn hình lớn và thao tác bằng remote.</p><a class="glass-action" href="stats.php?app=manager">Tải APK <span aria-hidden="true">↓</span></a><span class="app-download-count" data-counter-value data-download-count="manager">Đang tải số liệu…</span></article><article class="tv-app-card"><div class="tv-app-header"><span class="app-initial" aria-hidden="true">V.</span><div><h3>VXM Installer</h3><span>TV / TV Box</span></div></div><p>Công cụ hỗ trợ cài đặt ứng dụng trên TV và TV Box. Liên hệ Việt để kiểm tra bản phù hợp với thiết bị.</p><a class="glass-action" href="stats.php?app=installer">Tải APK <span aria-hidden="true">↓</span></a><span class="app-download-count" data-counter-value data-download-count="installer">Đang tải số liệu…</span></article><article class="tv-app-card"><div class="tv-app-header"><img src="assets/app-sport-stream.png" alt="" width="52" height="52" loading="lazy"><div><h3>Sport Stream</h3><span>Android TV</span></div></div><p>Ứng dụng thể thao dành cho Android TV, thao tác trực tiếp trên màn hình lớn.</p><a class="glass-action" href="stats.php?app=sport">Tải APK <span aria-hidden="true">↓</span></a><span class="app-download-count" data-counter-value data-download-count="sport">Đang tải số liệu…</span></article><article class="tv-app-card"><div class="tv-app-header"><img src="assets/app-task.png" alt="" width="52" height="52" loading="lazy"><div><h3>Dọn dẹp RAM</h3><span>Google TV</span></div></div><p>Tiện ích dọn dẹp RAM dành cho Google TV, tập trung vào thao tác gọn và dễ dùng trên TV.</p><a class="glass-action" href="stats.php?app=ram">Tải APK <span aria-hidden="true">↓</span></a><span class="app-download-count" data-counter-value data-download-count="ram">Đang tải số liệu…</span></article><article class="tv-app-card"><div class="tv-app-header"><img src="assets/app-adb.png" alt="" width="52" height="52" loading="lazy"><div><h3>VXM ADB Terminal</h3><span>Android TV</span></div></div><p>Công cụ nhập và chạy lệnh ADB dành cho TV, phù hợp khi cần thao tác kỹ thuật trên thiết bị.</p><a class="glass-action" href="stats.php?app=adb">Tải APK <span aria-hidden="true">↓</span></a><span class="app-download-count" data-counter-value data-download-count="adb">Đang tải số liệu…</span></article></div></section>
+
+  <div class="display-preferences"><button id="reduceTransparency" type="button" aria-pressed="false">Giảm độ trong suốt</button></div><div class="footer">© 2026 Việt Xiaomi · Hỗ trợ TV từ xa trên toàn quốc.</div>
+</div>
+
+<script>
+document.getElementById("reduceTransparency").addEventListener("click",function(){const active=document.documentElement.classList.toggle("reduce-transparency");this.setAttribute("aria-pressed",String(active));});
+let selectedTv="";
+const selectedIssues=new Set();
+
+const tvButtons=[...document.querySelectorAll("[data-tv]")];
+const issueButtons=[...document.querySelectorAll("[data-issue]")];
+[...tvButtons,...issueButtons].forEach(btn=>btn.setAttribute("aria-pressed","false"));
+const fields=["model","city","device","network","desc","time"].map(id=>document.getElementById(id));
+
+function refresh(){
+  document.getElementById("issueCount").textContent=selectedIssues.size+" đã chọn";
+  const v=id=>document.getElementById(id).value.trim();
+  const parts=[];
+  parts.push("YÊU CẦU HỖ TRỢ TV XIAOMI");
+  parts.push("");
+  parts.push("Loại TV: "+(selectedTv||"Chưa chọn"));
+  parts.push("Nhu cầu: "+(selectedIssues.size?[...selectedIssues].join(", "):"Chưa chọn"));
+  if(v("model")) parts.push("Model TV: "+v("model"));
+  if(v("city")) parts.push("Tỉnh / thành phố: "+v("city"));
+  if(v("device")!=="Chưa xác định") parts.push("Thiết bị hỗ trợ: "+v("device"));
+  if(v("network")!=="Chưa xác định") parts.push("Mạng TV: "+v("network"));
+  if(v("desc")) parts.push("Mô tả: "+v("desc"));
+  if(v("time")) parts.push("Thời gian thuận tiện: "+v("time"));
+  document.getElementById("draft").textContent=parts.join("\n");
+}
+
+tvButtons.forEach(btn=>btn.addEventListener("click",()=>{
+  selectedTv=btn.dataset.tv;
+  tvButtons.forEach(x=>{x.classList.toggle("active",x===btn);x.setAttribute("aria-pressed",String(x===btn));});
+  refresh();
+}));
+
+issueButtons.forEach(btn=>btn.addEventListener("click",()=>{
+  const issue=btn.dataset.issue;
+  if(selectedIssues.has(issue)){selectedIssues.delete(issue);btn.classList.remove("active")}
+  else{selectedIssues.add(issue);btn.classList.add("active")}
+  btn.setAttribute("aria-pressed",String(selectedIssues.has(issue)));
+  refresh();
+}));
+
+fields.forEach(el=>el.addEventListener("input",refresh));
+fields.forEach(el=>el.addEventListener("change",refresh));
+
+document.getElementById("resetBtn").addEventListener("click",()=>{
+  selectedTv="";selectedIssues.clear();
+  tvButtons.forEach(x=>{x.classList.remove("active");x.setAttribute("aria-pressed","false")});
+  issueButtons.forEach(x=>{x.classList.remove("active");x.setAttribute("aria-pressed","false")});
+  document.getElementById("model").value="";
+  document.getElementById("city").value="";
+  document.getElementById("device").selectedIndex=0;
+  document.getElementById("network").selectedIndex=0;
+  document.getElementById("desc").value="";
+  document.getElementById("time").value="";
+  refresh();
+});
+
+document.getElementById("copyBtn").addEventListener("click",async()=>{
+  const text=document.getElementById("draft").textContent;
+  try{
+    await navigator.clipboard.writeText(text);
+    const b=document.getElementById("copyBtn");
+    const old=b.textContent;b.textContent="Đã sao chép ✓";
+    setTimeout(()=>b.textContent=old,1500);
+  }catch(e){
+    const ta=document.createElement("textarea");ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove();
+  }
+});
+refresh();
+</script>
+<script src="stats.js?v=20261026-counters" defer></script>
+</body>
+</html>

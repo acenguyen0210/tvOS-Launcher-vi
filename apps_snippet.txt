@@ -1,0 +1,221 @@
+apps">Tải app</a><a href="#contact">Liên hệ</a></nav>
+
+    </div>
+
+  </header>
+
+
+
+  <section class="hero">
+
+    <div class="kicker">● HỖ TRỢ TỪ XA · TOÀN QUỐC</div>
+
+    <h2>TV gặp lỗi? Việt Xiaomi hỗ trợ bạn.</h2>
+
+    <p>Hỗ trợ qua điện thoại hoặc máy tính trên toàn quốc. Chọn loại TV và nhu cầu để xem thông tin cần chuẩn bị, rồi sao chép yêu cầu gửi cho Việt.</p>
+
+  </section>
+
+
+
+  <section class="site-counters" aria-label="Thống kê trang">
+
+    <div><strong id="visitCount" data-counter-value>—</strong><span>Lượt truy cập</span></div>
+
+    <div><strong id="downloadCount" data-counter-value>—</strong><span>Lượt bấm tải app</span></div>
+
+  </section>
+
+  <div class="layout" id="support">
+
+    <main class="stack">
+
+
+
+      <section class="step">
+
+        <div class="step-head">
+
+          <div class="step-title">
+
+            <div class="num">01</div>
+
+            <div><h3>Bạn đang dùng loại TV nào?</h3><p class="sub">Chọn TV Quốc tế hoặc TV Nội địa.</p></div>
+
+          </div>
+
+        </div>
+
+        <div class="options" id="tvOptions">
+
+          <button class="option" type="button" data-tv="Google TV / TV Quốc tế">
+
+            <div class="icon real-logo"><img src="assets/google-tv.svg" alt="Google TV"></div>
+
+            <div><strong>TV Quốc tế</strong></div>
+
+            <div class="check">✓</div>
+
+          </button>
+
+          <button class="option" type="button" data-tv="TV Nội địa">
+
+            <div class="icon real-logo xiaomi"><img src="assets/xiaomi.svg" alt="Xiaomi"></div>
+
+            <div><strong>TV Nội địa</strong></div>
+
+            <div class="check">✓</div>
+
+          </button>
+
+        </div>
+
+      </section>
+
+
+
+      <section class="step">
+
+        <div class="step-head">
+
+          <div class="step-title">
+
+            <div class="num">02</div>
+
+            <div><h3>Bạn cần hỗ trợ việc gì?</h3><p class="sub">Có thể chọn nhiều nhu cầu cùng lúc.</p></div>
+
+          </div>
+
+          <div class="count" id="issueCount">0 đã chọn</div>
+
+        </div>
+
+        <div class="options" id="issueOptions">
+
+          <button class="option" type="button" data-issue="Màn hình đen">
+
+            <div class="icon sys"><img src="assets/screen-off.svg" alt=""></div>
+
+            <div><strong>Màn hình đen</strong><span>TV bật nhưng không hiển thị hình</span></div>
+
+            <div class="check">✓</div>
+
+          </button>
+
+          <button class="option" type="button" data-issue="Giao diện tiếng Trung">
+
+            <div class="icon" aria-hidden="true">文</div>
+
+            <div><strong>Giao diện tiếng Trung</strong><span>Cần hỗ trợ giao diện dễ dùng hơn</span></div>
+
+            <div class="check">✓</div>
+
+          </button>
+
+          <button class="option" type="button" data-issue="Lỗi giọng nói">
+
+            <div class="icon sys"><img src="assets/mic-off.svg" alt=""></div>
+
+            <div><strong>Lỗi giọng nói</strong><span>Không sử dụng được tìm kiếm giọng nói</span></div>
+
+            <div class="check">✓</div>
+
+          </button>
+
+          <button class="option" type="button" data-issue="Khóa giao diện">
+
+            <div class="icon sys"><img src="assets/lock.svg" alt=""></div>
+
+            <div><strong>Khóa giao diện</strong><span>Bị khóa các chức năng</span></div>
+
+            <div class="check">✓</div>
+
+          </button>
+
+        </div>
+
+      </section>
+
+
+
+      <section class="step">
+
+        <div class="step-head">
+
+          <div class="step-title">
+
+            <div class="num">03</div>
+
+            <div><h3>Bổ sung để kiểm tra nhanh hơn</h3><p class="sub">Không bắt buộc. Điền những thông tin bạn biết.</p></div>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="fields">
+
+          <div class="field">
+
+            <label for="model">Model TV</label>
+
+            <input id="model" placeholder="VD: L55RB-APE">
+
+            <div class="helper">Xem trong mục Giới thiệu hoặc tem sau TV.</div>
+
+          </div>
+
+          <div class="field">
+
+            <label for="city">Tỉnh / thành phố</label>
+
+            <input id="city" placeholder="VD: Phú Thọ">
+
+          </div>
+
+          <div class="field">
+
+            <label for="device">Thiết bị dùng để hỗ trợ</label>
+
+            <select id="device">
+
+              <option>Chưa xác định</option>
+
+              <option>Điện thoại Android</option>
+
+              <option>iPhone</option>
+
+              <option>Máy tính Windows</option>
+
+              <option>Máy tính macOS</option>
+
+              <option>Chỉ có TV</option>
+
+            </select>
+
+          </div>
+
+          <div class="field">
+
+            <label for="network">Mạng đang dùng trên TV</label>
+
+            <select id="network">
+
+              <option>Chưa xác định</option>
+
+              <option>Wi-Fi</option>
+
+              <option>Cáp mạng LAN</option>
+
+              <option>TV chưa vào được mạng</option>
+
+            </select>
+
+          </div>
+
+          <div class="field full">
+
+            <label for="desc">Mô tả ngắn</label>
+
+            <textarea id="desc" plac
